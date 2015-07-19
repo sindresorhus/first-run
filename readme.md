@@ -2,6 +2,8 @@
 
 > Check if it's the first time the process is run
 
+Can be used to greet the user the first time they use your CLI app, show usage tip, initialize something, etc.
+
 
 ## Install
 
