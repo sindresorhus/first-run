@@ -13,7 +13,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "node test.js && node test2.js && node test3.js"
+    "test": "xo && node test.js && node test2.js && node test3.js"
   },
   "files": [
     "index.js"
@@ -30,5 +30,8 @@
   "dependencies": {
     "configstore": "^1.2.0",
     "read-pkg-up": "^1.0.1"
+  },
+  "devDependencies": {
+    "xo": "*"
   }
 }
