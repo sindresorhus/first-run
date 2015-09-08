@@ -29,9 +29,6 @@
   ],
   "dependencies": {
     "configstore": "^1.2.0",
-    "look-up": "^0.7.1"
-  },
-  "devDependencies": {
-    "ava": "0.0.4"
+    "read-pkg-up": "^1.0.1"
   }
 }

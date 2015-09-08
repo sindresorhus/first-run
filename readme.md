@@ -33,19 +33,17 @@ false
 
 ### firstRun([options])
 
-#### options
+#### options.name
 
-##### name
-
-Type: `object`  
+Type: `string`  
 Default: `name` field in your package.json
 
 The name used to identify it.
 
-##### clear
-Type: `boolean`
+### firstRun.clear()
 
-Set this param to clear the first-run value
+Clear the state.
+
 
 ## License
 
