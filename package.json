@@ -13,7 +13,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "node test.js && node test2.js"
+    "test": "node test.js && node test2.js && node test3.js"
   },
   "files": [
     "index.js"

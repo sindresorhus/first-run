@@ -42,6 +42,10 @@ Default: `name` field in your package.json
 
 The name used to identify it.
 
+##### clear
+Type: `boolean`
+
+Set this param to clear the first-run value
 
 ## License
 
