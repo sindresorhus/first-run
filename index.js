@@ -4,8 +4,6 @@ var Configstore = require('configstore');
 var readPkgUp = require('read-pkg-up');
 
 function getConf(opts) {
-	opts = opts || {};
-
 	var name = opts.name;
 
 	if (!name) {
@@ -22,9 +20,8 @@ function getConf(opts) {
 }
 
 function firstRun(opts) {
-	opts = opts || {};
-	var version = opts.version = opts.version || _getVersion();
-	version = version.replace(/\./g, '\\.'); // we need to replace the dots with '\\.' for dotProp
+	opts = _populateOpts(opts);
+	var version = opts.version.replace(/\./g, '\\.'); // we need to replace the dots with '\\.' for dotProp
 	var firstRun;
 	var conf = getConf(opts);
 
@@ -32,7 +29,9 @@ function firstRun(opts) {
 		firstRun = conf.get(version + ".firstRun");
 	}
 
-	if (firstRun === true) {
+	if (firstRun === true || !opts.version) {
+		// only change the value in the config
+		// IF we are actually running the program and not checking if a previous version has been run
 		conf.set(version + '.firstRun', false);
 	}
 
@@ -40,15 +39,15 @@ function firstRun(opts) {
 }
 
 function clear(opts) {
-	opts = opts || {};
-	opts.version = opts.version || _getVersion();
+	opts = _populateOpts(opts);
 	var version = opts.version.replace(/\./g, '\\.');
 	getConf(opts).set(version + ".firstRun", true);
 }
 
-// get the version from package.json
-function _getVersion() {
-	return readPkgUp.sync({cwd: path.dirname(module.parent.filename)}).pkg.version;
+function _populateOpts(opts) {
+	opts = opts || {};
+	opts.version = opts.version || readPkgUp.sync({cwd: path.dirname(module.parent.filename)}).pkg.version;
+	return opts;
 }
 
 module.exports = firstRun;
