@@ -30,9 +30,8 @@ function firstRun(opts) {
 	// perVersion mode
 	if (opts && opts.perVersion) {
 		var info = conf.get('firstRun');
-		var firstRun = !info.ran;
 
-		if (firstRun) {
+		if (!info.ran) {
 			conf.set('firstRun', {version, ran: true});
 		}
 	} else {
