@@ -30,7 +30,6 @@ function firstRun(opts) {
 	// perVersion mode
 	if (opts && opts.perVersion) {
 		var info = conf.get('firstRun');
-		var storedVersion = info.version;
 		var firstRun = !info.ran;
 
 		if (firstRun) {
