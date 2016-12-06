@@ -28,6 +28,29 @@ $ node x.js
 false
 ```
 
+```json
+// package.json
+"version": "1.2.0"
+```
+
+```js
+// x.js
+var firstRun = require('first-run');
+
+console.log({version: '1.1'});
+```
+
+If you have never ran version 1.1:
+```
+$ node x.js
+true
+```
+
+If you ran version 1.1:
+```
+$ node x.js
+false
+```
 
 ## API
 
@@ -39,6 +62,13 @@ Type: `string`
 Default: `name` field in your package.json
 
 The name used to identify it.
+
+#### options.version
+
+Type: `string`
+Default: `version` field in your package.json
+
+The version of the project you want to check.
 
 ### firstRun.clear()
 
