@@ -1,8 +1,11 @@
 'use strict';
-var Configstore = require('configstore');
-var firstRun = require('./');
+
+const Configstore = require('configstore');
+const firstRun = require('.');
+
 (new Configstore('first-run_first-run')).clear();
-var shouldBeTrue = firstRun();
+const shouldBeTrue = firstRun();
 firstRun.clear();
-var shouldBeTrueAgain = firstRun();
+const shouldBeTrueAgain = firstRun();
+// eslint-disable-next-line unicorn/no-process-exit
 process.exit(shouldBeTrue && shouldBeTrueAgain ? 0 : 1);
