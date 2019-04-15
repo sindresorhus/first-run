@@ -1,5 +1,4 @@
 'use strict';
-
 const firstRun = require('.');
 
 // eslint-disable-next-line unicorn/no-process-exit

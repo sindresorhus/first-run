@@ -1,5 +1,4 @@
 'use strict';
-
 const Configstore = require('configstore');
 const firstRun = require('.');
 

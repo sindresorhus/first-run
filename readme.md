@@ -37,7 +37,11 @@ false
 
 Clear the state.
 
-#### options.name
+#### options
+
+Type: `Object`
+
+##### name
 
 Type: `string`<br>
 Default: `name` field in your package.json
