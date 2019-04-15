@@ -8,7 +8,7 @@ Can be used to greet the user the first time they use your CLI app, show usage t
 ## Install
 
 ```
-$ npm install --save first-run
+$ npm install first-run
 ```
 
 
@@ -16,7 +16,7 @@ $ npm install --save first-run
 
 ```js
 // x.js
-var firstRun = require('first-run');
+const firstRun = require('first-run');
 
 console.log(firstRun());
 ```
@@ -33,18 +33,18 @@ false
 
 ### firstRun([options])
 
+### firstRun.clear([options])
+
+Clear the state.
+
 #### options.name
 
-Type: `string`  
+Type: `string`<br>
 Default: `name` field in your package.json
 
 The name used to identify it.
 
-### firstRun.clear()
-
-Clear the state.
-
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)
