@@ -6,3 +6,4 @@ expectType<boolean>(firstRun({name: 'foo'}));
 
 firstRun.clear();
 firstRun.clear({name: 'foo'});
+firstRun.clear({name: 'foo', version:'1.2.3'});

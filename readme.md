@@ -48,6 +48,12 @@ Default: `name` field in your package.json
 
 The name used to identify it.
 
+##### version
+
+Type: `string`<br>
+Default: if `name` is not set, `version` field in your package.json, otherwise `undefined`.
+
+The version used to identify it.
 
 ## License
 

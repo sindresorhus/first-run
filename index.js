@@ -3,34 +3,54 @@ const path = require('path');
 const Configstore = require('configstore');
 const readPkgUp = require('read-pkg-up');
 
-function getConfigStore(options = {}) {
-	let {name} = options;
+const getConfigStoreAndKey = (options = {}) => {
+	let {name, version} = options;
 
 	if (!name) {
 		delete require.cache[__filename];
-		name = readPkgUp.sync({cwd: path.dirname(module.parent.filename)}).pkg.name;
+		const {pkg} = readPkgUp.sync({cwd: path.dirname(module.parent.filename)});
+		name = pkg.name;
+
+		if (!name) {
+			throw new Error('Couldn\'t infer the package name. Please specify it in the options.');
+		}
+
+		if (!version) {
+			version = pkg.version;
+		}
 	}
 
-	if (!name) {
-		throw new Error('Couldn\'t infer the package name. Please specify it in the options.');
+	if (!version) {
+		version = undefined;
 	}
 
-	return new Configstore(`first-run_${name}`, {firstRun: true});
-}
+	const configStore = new Configstore(`first-run_${name}`, {firstRun: true});
+	const key = version === undefined ? 'firstRun' : `firstRunVersion.${version}`;
+	return {configStore, key};
+};
 
 function firstRun(options) {
-	const configStore = getConfigStore(options);
-	const firstRun = configStore.get('firstRun');
+	const {configStore, key} = getConfigStoreAndKey(options);
 
-	if (firstRun === true) {
-		configStore.set('firstRun', false);
+	const configFirstRun = configStore.get(key);
+	const firstRun = configFirstRun === undefined || configFirstRun === true;
+	if (firstRun) {
+		configStore.set({
+			firstRun: false,
+			[key]: false
+		});
 	}
 
 	return firstRun;
 }
 
 function clear(options) {
-	getConfigStore(options).set('firstRun', true);
+	const {configStore, key} = getConfigStoreAndKey(options);
+
+	configStore.set({
+		firstRun: true,
+		[key]: true
+	});
 }
 
 module.exports = firstRun;

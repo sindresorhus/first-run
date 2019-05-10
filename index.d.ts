@@ -4,6 +4,10 @@ declare namespace firstRun {
 		The name used to identify it. Default: `name` field in your package.json
 		*/
 		readonly name?: string;
+		/**
+		The version used to identify it. Default: if `name` is not set, `version` field in your package.json, otherwise `undefined`.
+		*/
+		readonly version?: string;
 	}
 }
 
