@@ -29,11 +29,12 @@
 		"start"
 	],
 	"dependencies": {
-		"ava": "^2.1.0",
 		"configstore": "^4.0.0",
 		"read-pkg-up": "^5.0.0"
 	},
 	"devDependencies": {
+		"ava": "^2.1.0",
+		"nyc": "^14.1.1",
 		"tsd": "^0.7.2",
 		"xo": "^0.24.0"
 	}
