@@ -1,6 +1,6 @@
 'use strict';
 const Configstore = require('configstore');
-const firstRun = require('.');
+const firstRun = require('..');
 
 (new Configstore('first-run_first-run')).clear();
 const shouldBeTrue = firstRun();

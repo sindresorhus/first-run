@@ -7,13 +7,13 @@ declare namespace firstRun {
 		/**
 		The version used to identify it. Default: if `name` is not set, `version` field in your package.json, otherwise `undefined`.
 		*/
-		readonly version?: string;
+		readonly version?: undefined | string;
 	}
 }
 
 declare const firstRun: {
 	/**
-	Check if it's the first time the process is run.
+	Returns true the first time function is executed on machine for specified `name` and `version` pair, false afterwards.
 
 	@example
 	```
@@ -31,7 +31,7 @@ declare const firstRun: {
 	(options?: firstRun.Options): boolean;
 
 	/**
-	Clear the state.
+	Clear the saved state for specified `name` and `version` pair. Next call of `firstRun` for this pair will return true.
 	*/
 	clear(options?: firstRun.Options): void;
 };

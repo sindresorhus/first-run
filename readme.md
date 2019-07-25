@@ -14,12 +14,35 @@ $ npm install first-run
 
 ## Usage
 
+Simple use case, inside package(`name` and `version` will be take from `package.json`):
+
 ```js
 // x.js
 const firstRun = require('first-run');
 
-console.log(firstRun());
+console.log(firstRun()); // name and version will be inferred
 ```
+
+```js
+// clear.js
+const firstRun = require('first-run');
+
+firstRun.clear(); // name and version will be inferred
+```
+
+```
+$ node x.js
+true
+$ node x.js
+false
+$ node clear.js
+$ node x.js
+true
+$ node x.js
+false
+```
+
+Then, after package version changes:
 
 ```
 $ node x.js
@@ -33,9 +56,11 @@ false
 
 ### firstRun([options])
 
+Returns true the first time function is executed on machine for specified `name` and `version` pair, false afterwards.
+
 ### firstRun.clear([options])
 
-Clear the state.
+Clear the saved state for specified `name` and `version` pair. Next call of `firstRun` for this pair will return true.
 
 #### options
 
