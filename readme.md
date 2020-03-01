@@ -14,23 +14,24 @@ $ npm install first-run
 
 ## Usage
 
-Simple use case, inside package(`name` and `version` will be take from `package.json`):
+### Without version
+Simple use case, inside package(`name` will be taken from `package.json`):
 
 ```js
 // x.js
 const firstRun = require('first-run');
 
-console.log(firstRun()); // name and version will be inferred
+console.log(firstRun()); // name will be inferred
 ```
 
 ```js
 // clear.js
 const firstRun = require('first-run');
 
-firstRun.clear(); // name and version will be inferred
+firstRun.clear(); // name will be inferred
 ```
 
-```
+```sh
 $ node x.js
 true
 $ node x.js
@@ -42,9 +43,35 @@ $ node x.js
 false
 ```
 
-Then, after package version changes:
+### With version
 
+Simple use case, inside package(`name` and `version` will be taken from `package.json`):
+
+```js
+// x.js
+const firstRun = require('first-run');
+
+console.log(firstRun({detectVersion: true})); // name and version will be inferred
 ```
+
+```js
+// clear.js
+const firstRun = require('first-run');
+
+firstRun.clear({detectVersion: true}); // name and version will be inferred
+```
+
+```sh
+$ node x.js
+true
+$ node x.js
+false
+$ node clear.js
+$ node x.js
+true
+$ node x.js
+false
+# version in package.json changes
 $ node x.js
 true
 $ node x.js
