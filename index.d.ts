@@ -10,7 +10,7 @@ declare namespace firstRun {
 		readonly version?: undefined | string;
 
 		/**
-		When `name` is detected from `package.json`, version will be also detected and used if this field was set to `true`. Default: `false`
+		If set to `true` and `name` detected from `package.json`, `version` will be also detected. Default: `false`
 		*/
 		readonly detectVersion?: boolean;
 	}

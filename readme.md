@@ -112,7 +112,7 @@ The version used to identify it.
 Type: `boolean`<br>
 Default: `false`.
 
-When `name` is detected from `package.json`, version will be also detected and used if this field was set to `true`.
+If set to `true` and `name` detected from `package.json`, `version` will be also detected.
 
 ## License
 
