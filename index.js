@@ -4,7 +4,7 @@ const Configstore = require('configstore');
 const readPkgUp = require('read-pkg-up');
 
 const getConfigStoreAndKey = (options = {}) => {
-	let {name, version} = options;
+	let {name, version, detectVersion} = options;
 
 	if (!name) {
 		delete require.cache[__filename];
@@ -15,7 +15,7 @@ const getConfigStoreAndKey = (options = {}) => {
 			throw new Error('Couldn\'t infer the package name. Please specify it in the options.');
 		}
 
-		if (!version) {
+		if (detectVersion) {
 			version = pkg.version;
 		}
 	}

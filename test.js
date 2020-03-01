@@ -20,6 +20,12 @@ test.serial('main', t => {
 	t.false(firstRun());
 });
 
+test.serial('detected version', t => {
+	new Configstore('first-run_first-run').clear();
+	t.true(firstRun({detectVersion: true}));
+	t.false(firstRun({detectVersion: true}));
+});
+
 test.serial('clear', t => {
 	firstRun();
 	t.false(firstRun());

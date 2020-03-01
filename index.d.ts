@@ -5,9 +5,14 @@ declare namespace firstRun {
 		*/
 		readonly name?: string;
 		/**
-		The version used to identify it. Default: if `name` is not set, `version` field in your package.json, otherwise `undefined`.
+		The version used to identify it. Default: `undefined`
 		*/
 		readonly version?: undefined | string;
+
+		/**
+		When `name` is detected from `package.json`, version will be also detected and used if this field was set to `true`. Default: `false`
+		*/
+		readonly detectVersion?: boolean;
 	}
 }
 

@@ -76,9 +76,16 @@ The name used to identify it.
 ##### version
 
 Type: `string`<br>
-Default: if `name` is not set, `version` field in your package.json, otherwise `undefined`.
+Default: `undefined`.
 
 The version used to identify it.
+
+##### detectVersion
+
+Type: `boolean`<br>
+Default: `false`.
+
+When `name` is detected from `package.json`, version will be also detected and used if this field was set to `true`.
 
 ## License
 
