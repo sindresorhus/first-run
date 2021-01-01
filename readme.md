@@ -1,4 +1,4 @@
-# first-run [![Build Status](https://travis-ci.org/sindresorhus/first-run.svg?branch=master)](https://travis-ci.org/sindresorhus/first-run)
+# first-run
 
 > Check if it's the first time the process is run
 
