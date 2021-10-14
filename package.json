@@ -1,6 +1,6 @@
 {
 	"name": "first-run",
-	"version": "2.0.0",
+	"version": "3.0.0",
 	"description": "Check if it's the first time the process is run",
 	"license": "MIT",
 	"repository": "sindresorhus/first-run",
