@@ -1,8 +1,6 @@
 import {expectType} from 'tsd';
-import firstRun = require('.');
+import isFirstRun, {clearFirstRun} from './index.js';
 
-expectType<boolean>(firstRun());
-expectType<boolean>(firstRun({name: 'foo'}));
+expectType<boolean>(isFirstRun({name: 'foo'}));
 
-firstRun.clear();
-firstRun.clear({name: 'foo'});
+clearFirstRun({name: 'foo'});

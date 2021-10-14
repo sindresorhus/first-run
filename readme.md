@@ -4,21 +4,19 @@
 
 Can be used to greet the user the first time they use your CLI app, show usage tip, initialize something, etc.
 
-
 ## Install
 
+```sh
+npm install first-run
 ```
-$ npm install first-run
-```
-
 
 ## Usage
 
 ```js
 // x.js
-const firstRun = require('first-run');
+import isFirstRun from 'first-run';
 
-console.log(firstRun());
+console.log(isFirstRun({name: 'x'}));
 ```
 
 ```
@@ -28,27 +26,22 @@ $ node x.js
 false
 ```
 
-
 ## API
 
-### firstRun([options])
+### isFirstRun(options)
 
-### firstRun.clear([options])
+### clearFirstRun(options)
 
 Clear the state.
 
 #### options
 
-Type: `Object`
+Type: `object`
 
 ##### name
 
-Type: `string`<br>
-Default: `name` field in your package.json
+Type: `string`
 
 The name used to identify it.
 
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)
+Usually, you would fetch the `name` field from package.json.

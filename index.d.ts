@@ -1,35 +1,31 @@
-declare namespace firstRun {
-	interface Options {
-		/**
-		The name used to identify it. Default: `name` field in your package.json
-		*/
-		readonly name?: string;
-	}
+export interface Options {
+	/**
+	The name used to identify it.
+
+	Usually, you would fetch the `name` field from package.json.
+	*/
+	readonly name: string;
 }
 
-declare const firstRun: {
-	/**
-	Check if it's the first time the process is run.
+/**
+Check if it's the first time the process is run.
 
-	@example
-	```
-	// x.js
-	import firstRun = require('first-run');
+@example
+```
+// x.js
+import isFirstRun from 'first-run';
 
-	console.log(firstRun());
+console.log(isFirstRun());
 
-	// $ node x.js
-	// true
-	// $ node x.js
-	// false
-	```
-	*/
-	(options?: firstRun.Options): boolean;
+// $ node x.js
+// true
+// $ node x.js
+// false
+```
+*/
+export default function isFirstRun(options: Options): boolean;
 
-	/**
-	Clear the state.
-	*/
-	clear(options?: firstRun.Options): void;
-};
-
-export = firstRun;
+/**
+Clear the state.
+*/
+export function clearFirstRun(options: Options): void;

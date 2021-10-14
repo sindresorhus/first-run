@@ -1,37 +1,24 @@
-'use strict';
-const path = require('path');
-const Configstore = require('configstore');
-const readPkgUp = require('read-pkg-up');
+import Configstore from 'configstore';
 
-function getConfigStore(options = {}) {
-	let {name} = options;
-
+function getConfigStore({name} = {}) {
 	if (!name) {
-		delete require.cache[__filename];
-		name = readPkgUp.sync({cwd: path.dirname(module.parent.filename)}).pkg.name;
-	}
-
-	if (!name) {
-		throw new Error('Couldn\'t infer the package name. Please specify it in the options.');
+		throw new Error('Please specify the `name` option.');
 	}
 
 	return new Configstore(`first-run_${name}`, {firstRun: true});
 }
 
-function firstRun(options) {
+export default function isFirstRun(options) {
 	const configStore = getConfigStore(options);
-	const firstRun = configStore.get('firstRun');
+	const isFirstRun = configStore.get('firstRun');
 
-	if (firstRun === true) {
+	if (isFirstRun === true) {
 		configStore.set('firstRun', false);
 	}
 
-	return firstRun;
+	return isFirstRun;
 }
 
-function clear(options) {
+export function clearFirstRun(options) {
 	getConfigStore(options).set('firstRun', true);
 }
-
-module.exports = firstRun;
-module.exports.clear = clear;
