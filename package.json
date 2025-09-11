@@ -16,7 +16,7 @@
 		"node": "^12.20.0 || ^14.13.1 || >=16.0.0"
 	},
 	"scripts": {
-		"test": "xo && node test.js && node test2.js && node test3.js && tsd"
+		"test": "xo && node test.js && node test2.js && node test3.js && node test4.js && tsd"
 	},
 	"files": [
 		"index.js",
