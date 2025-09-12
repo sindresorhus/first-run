@@ -26,28 +26,6 @@ $ node x.js
 false
 ```
 
-### Version-specific tracking
-
-Use `isFirstRunForVersion()` to track different versions independently:
-
-```js
-import {isFirstRunForVersion} from 'first-run';
-
-console.log(isFirstRunForVersion({name: 'my-app', version: '2.1.0'}));
-//=> true
-
-console.log(isFirstRunForVersion({name: 'my-app', version: '2.1.0'}));
-//=> false
-
-console.log(isFirstRunForVersion({name: 'my-app', version: '2.2.0'}));
-//=> true (new version!)
-```
-
-This is useful for:
-- Showing version-specific onboarding or upgrade messages
-- Running migration code for new versions  
-- Tracking feature rollouts per version
-
 ## API
 
 ### isFirstRun(options)
@@ -66,13 +44,41 @@ Each version is tracked independently from the main `isFirstRun()` function and 
 
 Clear the state for a specific version.
 
+#### Example
+
+```js
+import {isFirstRunForVersion, clearFirstRunForVersion} from 'first-run';
+
+console.log(isFirstRunForVersion({name: 'my-app', version: '2.1.0'}));
+//=> true
+
+console.log(isFirstRunForVersion({name: 'my-app', version: '2.1.0'}));
+//=> false
+
+// Clear the state for version 2.1.0
+clearFirstRunForVersion({name: 'my-app', version: '2.1.0'});
+
+console.log(isFirstRunForVersion({name: 'my-app', version: '2.1.0'}));
+//=> true (cleared!)
+
+console.log(isFirstRunForVersion({name: 'my-app', version: '2.2.0'}));
+//=> true (new version!)
+```
+
+This is useful for:
+- Showing version-specific onboarding or upgrade messages
+- Running migration code for new versions
+- Tracking feature rollouts per version
+- Testing version-specific initialization logic
+
 #### options
 
 Type: `object`
 
 ##### name
 
-Type: `string`
+Type: `string`\
+**Required**
 
 The name used to identify it.
 
@@ -80,7 +86,7 @@ Usually, you would fetch the `name` field from package.json.
 
 ##### version
 
-Type: `string`  
+Type: `string`\
 **(Only for `isFirstRunForVersion` and `clearFirstRunForVersion`)**
 
 The version to track separately. Each version will be tracked independently.

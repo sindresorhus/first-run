@@ -1,13 +1,13 @@
-export interface Options {
+export type Options = {
 	/**
 	The name used to identify it.
 
 	Usually, you would fetch the `name` field from package.json.
 	*/
 	readonly name: string;
-}
+};
 
-export interface VersionOptions {
+export type VersionOptions = {
 	/**
 	The name used to identify it.
 
@@ -21,7 +21,7 @@ export interface VersionOptions {
 	When using version tracking functions, each version will be tracked independently.
 	*/
 	readonly version: string;
-}
+};
 
 /**
 Check if it's the first time the process is run.
@@ -31,7 +31,7 @@ Check if it's the first time the process is run.
 // x.js
 import isFirstRun from 'first-run';
 
-console.log(isFirstRun());
+console.log(isFirstRun({name: 'my-app'}));
 
 // $ node x.js
 // true
